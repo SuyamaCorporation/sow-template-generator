@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務委託契約書テンプレ生成</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        slate: {
+          50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+          300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b',
+          600: '#475569', 700: '#334155', 800: '#1e293b',
+          900: '#0f172a'
+        },
+        indigo: {
+          50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe',
+          300: '#a5b4fc', 400: '#818cf8', 500: '#6366f1',
+          600: '#4f46e5', 700: '#4338ca', 800: '#3730a3',
+          900: '#312e81'
+        }
+      }
+    }
+  }
+}
+</script>
+</head>
+<body class="bg-slate-50 min-h-screen font-sans">
+
+<div class="max-w-2xl mx-auto px-4 py-6">
+  <h1 class="text-3xl font-bold text-slate-700 mb-1 text-center">📄 業務委託契約書テンプレ生成</h1>
+  <p class="text-slate-500 text-center text-sm mb-6">フォームに入力して契約書を自動生成</p>
+
+  <div class="bg-white rounded-2xl shadow-md p-6 mb-5 border border-slate-100">
+    <h2 class="text-base font-semibold text-indigo-700 mb-4 border-b border-slate-100 pb-2">基本情報</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label class="text-xs text-slate-500 mb-1 block" for="projectName">プロジェクト名</label>
+        <input id="projectName" type="text" maxlength="100" aria-label="プロジェクト名" placeholder="Webサイトリニューアル"
+          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400">
+      </div>
+      <div>
+        <label class="text-xs text-slate-500 mb-1 block" for="clientName">クライアント名</label>
+        <input id="clientName" type="text" maxlength="100" aria-label="クライアント名" placeholder="株式会社〇〇"
+          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400">
+      </div>
+      <div>
+        <label class="text-xs text-slate-500 mb-1 block" for="contractorName">受託者名（自社）</label>
+        <input id="contractorName" type="text" maxlength="100" aria-label="受託者名" placeholder="合同会社△△"
+          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400">
+      </div>
+      <div>
+        <label class="text-xs text-slate-500 mb-1 block" for="startDate">開始日</label>
+        <input id="startDate" type="date" aria-label="開始日"
+          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400">
+      </div>
+      <div>
+        <label class="text-xs text-slate-500 mb-1 block" for="endDate">終了日</label>
+        <input id="endDate" type="date" aria-label="終了日"
+          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400">
+      </div>
+      <div>
+        <label class="text-xs text-slate-500 mb-1 block" for="paymentAmount">報酬額 (¥)</label>
+        <input id="paymentAmount" type="number" min="0" aria-label="報酬額" placeholder="500000"
+          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400">
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <label class="text-xs text-slate-500 mb-1 block" for="deliverables">成果物（カンマ区切り）</label>
+      <textarea id="deliverables" rows="2" maxlength="500" aria-label="成果物"
+        placeholder="Webサイト（最大20ページ）, デザインモックアップ, ソースコード一式"
+        class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 resize-none"></textarea>
+    </div>
+
+    <div class="mt-4">
+      <label class="text-xs text-slate-500 mb-1 block" for="acceptCriteria">検収基準</label>
+      <textarea id="acceptCriteria" rows="2" maxlength="300" aria-label="検収基準"
+        placeholder="クライアントによる成果物確認後、7営業日以内に書面で検収または修正指示"
+        class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 resize-none"></textarea>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
+      <div>
+        <label class="text-xs text-slate-500 mb-1 block" for="paySchedule">支払い方法</label>
+        <select id="paySchedule" aria-label="支払い方法"
+          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400">
+          <option value="lump">一括払い</option>
+          <option value="monthly">月払い</option>
+          <option value="milestone">マイルストーン払い</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs text-slate-500 mb-1 block" for="confidentiality">秘密保持条項</label>
+        <select id="confidentiality" aria-label="秘密保持条項"
+          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400">
+          <option value="yes">あり</option>
+          <option value="no">なし</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs text-slate-500 mb-1 block" for="ipOwnership">知的財産権の帰属</label>
+        <select id="ipOwnership" aria-label="知的財産権の帰属"
+          class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400">
+          <option value="client">クライアント</option>
+          <option value="contractor">受託者</option>
+          <option value="joint">共同所有</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="generateBtn" aria-label="契約書を生成"
+      class="mt-5 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl py-3 text-sm transition-colors">
+      契約書を生成する
+    </button>
+  </div>
+
+  <!-- Output -->
+  <div id="outputSection" class="hidden">
+    <div class="bg-white rounded-2xl shadow-md p-6 border border-slate-100">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-base font-semibold text-indigo-700">生成された契約書</h2>
+        <button id="copyBtn" aria-label="クリップボードにコピー"
+          class="bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-semibold rounded-lg px-4 py-2 text-xs transition-colors flex items-center gap-1">
+          <span id="copyIcon">📋</span> コピー
+        </button>
+      </div>
+      <pre id="outputText"
+        class="whitespace-pre-wrap text-xs text-slate-700 bg-slate-50 border border-slate-200 rounded-xl p-4 font-mono leading-relaxed overflow-auto max-h-[60vh]"></pre>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const STORAGE_KEY = 'sow-generator-data';
+
+  function val(id) { return document.getElementById(id).value.trim(); }
+
+  function fmtDate(dateStr) {
+    if (!dateStr) return '____年__月__日';
+    const d = new Date(dateStr + 'T00:00:00');
+    return d.getFullYear() + '年' + (d.getMonth()+1) + '月' + d.getDate() + '日';
+  }
+
+  function fmtMoney(str) {
+    const n = parseInt(str);
+    if (!n || isNaN(n)) return '（金額未入力）';
+    return '金' + n.toLocaleString('ja-JP') + '円也（税別）';
+  }
+
+  function payScheduleText(v, amount) {
+    const amt = parseInt(amount) || 0;
+    if (v === 'lump') return '検収完了後30日以内に一括払い（' + fmtMoney(amount) + '）';
+    if (v === 'monthly') return '毎月末日締め翌月末日払い（月額: ' + fmtMoney(String(Math.round(amt/6))) + '、全6回）';
+    return 'マイルストーン達成時ごとに所定金額を支払う（詳細は別途覚書）';
+  }
+
+  function ipText(v, client, contractor) {
+    const c = client || 'クライアント';
+    const r = contractor || '受託者';
+    if (v === 'client') return '本契約に基づき制作された成果物に関する著作権その他の知的財産権（著作権法第27条及び第28条の権利を含む）は、' + r + 'から' + c + 'に対し、報酬の完済をもって譲渡されるものとする。';
+    if (v === 'contractor') return '本契約に基づき制作された成果物に関する著作権その他の知的財産権は' + r + 'に帰属し、' + c + 'は成果物を利用するための非独占的ライセンスを取得するものとする。';
+    return '本契約に基づき制作された成果物に関する著作権その他の知的財産権は' + c + 'と' + r + 'の共同所有とし、各持分は2分の1とする。但し、単独での行使は相手方の書面による同意を要する。';
+  }
+
+  function generateSOW() {
+    const proj = val('projectName') || '（プロジェクト名未入力）';
+    const client = val('clientName') || '（クライアント名未入力）';
+    const contractor = val('contractorName') || '（受託者名未入力）';
+    const startDate = val('startDate');
+    const endDate = val('endDate');
+    const amount = val('paymentAmount');
+    const rawDeliv = val('deliverables');
+    const deliverables = rawDeliv
+      ? rawDeliv.split(/[,、，]/).map((s,i) => '  '+(i+1)+'. '+s.trim()).join('\n')
+      : '  （成果物未入力）';
+    const acceptCriteria = val('acceptCriteria') || '（検収基準未入力）';
+    const paySchedule = val('paySchedule');
+    const confidentiality = val('confidentiality');
+    const ip = val('ipOwnership');
+
+    const today = new Date();
+    const todayStr = today.getFullYear() + '年' + (today.getMonth()+1) + '月' + today.getDate() + '日';
+
+    let doc = '';
+    doc += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+    doc += '          業  務  委  託  契  約  書\n';
+    doc += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+    doc += '　' + client + '（以下「委託者」という）と' + contractor + '（以下「受託者」という）とは、\n';
+    doc += '以下のとおり業務委託契約（以下「本契約」という）を締結する。\n\n';
+    doc += '契約締結日：' + todayStr + '\n\n';
+    doc += '■ 第1条（業務の目的）\n';
+    doc += '　委託者は受託者に対し、下記プロジェクトに関する業務を委託し、受託者はこれを受託する。\n';
+    doc += '　プロジェクト名：' + proj + '\n\n';
+    doc += '■ 第2条（業務期間）\n';
+    doc += '　業務開始日：' + fmtDate(startDate) + '\n';
+    doc += '　業務完了日：' + fmtDate(endDate) + '\n\n';
+    doc += '■ 第3条（成果物）\n';
+    doc += '　受託者が委託者に納品する成果物は以下のとおりとする。\n';
+    doc += deliverables + '\n\n';
+    doc += '■ 第4条（検収）\n';
+    doc += '　' + acceptCriteria + '\n';
+    doc += '　検収期間内に委託者から書面による異議申立がない場合、検収完了とみなす。\n\n';
+    doc += '■ 第5条（報酬及び支払い方法）\n';
+    doc += '　委託者は受託者に対し、本業務の対価として以下のとおり報酬を支払う。\n';
+    doc += '　報酬額：' + fmtMoney(amount) + '\n';
+    doc += '　支払い方法：' + payScheduleText(paySchedule, amount) + '\n';
+    doc += '　支払い先：受託者指定の銀行口座（別途通知）\n\n';
+    doc += '■ 第6条（再委託）\n';
+    doc += '　受託者は委託者の書面による事前承認なしに、本業務の全部又は一部を第三者に再委託してはならない。\n\n';
+    doc += '■ 第7条（知的財産権）\n';
+    doc += '　' + ipText(ip, client, contractor) + '\n\n';
+
+    if (confidentiality === 'yes') {
+      doc += '■ 第8条（秘密保持）\n';
+      doc += '　委託者及び受託者は、本契約の遂行過程で知り得た相手方の技術上・営業上その他一切の\n';
+      doc += '情報（以下「秘密情報」という）を第三者に開示・漏洩してはならず、本契約の目的以外に\n';
+      doc += '使用してはならない。この義務は本契約終了後3年間存続する。\n\n';
+      doc += '■ 第9条（損害賠償）\n';
+    } else {
+      doc += '■ 第8条（損害賠償）\n';
+    }
+
+    const dmgArticle = confidentiality === 'yes' ? '第9条' : '第8条';
+    doc += '　一方が本契約に違反し相手方に損害を与えた場合、違反した当事者は相手方に生じた\n';
+    doc += '直接かつ通常の損害を賠償するものとする。但し、賠償額は本契約の報酬額を上限とする。\n\n';
+
+    const nextArt = confidentiality === 'yes' ? 10 : 9;
+    doc += '■ 第' + nextArt + '条（契約解除）\n';
+    doc += '　委託者又は受託者は、相手方が本契約に違反し、14日間の催告期間内に是正されない場合、\n';
+    doc += '本契約を解除することができる。\n\n';
+
+    doc += '■ 第' + (nextArt+1) + '条（準拠法・管轄）\n';
+    doc += '　本契約は日本法に準拠し、東京地方裁判所を第一審の専属的合意管轄裁判所とする。\n\n';
+
+    doc += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+    doc += '以上を証するため、本書2通を作成し、各自記名押印の上各1通を保有する。\n\n';
+    doc += todayStr + '\n\n';
+    doc += '委  託  者：' + client + '\n';
+    doc += '　　　　　　署名: ________________　印\n\n';
+    doc += '受  託  者：' + contractor + '\n';
+    doc += '　　　　　　署名: ________________　印\n';
+    doc += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+
+    return doc;
+  }
+
+  function saveToStorage() {
+    const ids = ['projectName','clientName','contractorName','startDate','endDate','paymentAmount','deliverables','acceptCriteria','paySchedule','confidentiality','ipOwnership'];
+    const data = {};
+    ids.forEach(id => { data[id] = document.getElementById(id).value; });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function loadFromStorage() {
+    try {
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (!data) return;
+      Object.keys(data).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = data[id];
+      });
+    } catch(e) {}
+  }
+
+  document.getElementById('generateBtn').addEventListener('click', () => {
+    saveToStorage();
+    const text = generateSOW();
+    const outputText = document.getElementById('outputText');
+    outputText.textContent = text;
+    document.getElementById('outputSection').classList.remove('hidden');
+    document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', () => {
+    const text = document.getElementById('outputText').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const icon = document.getElementById('copyIcon');
+      icon.textContent = '✅';
+      setTimeout(() => { icon.textContent = '📋'; }, 2000);
+    }).catch(() => {
+      const range = document.createRange();
+      range.selectNode(document.getElementById('outputText'));
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand('copy');
+    });
+  });
+
+  // Set default dates
+  const today = new Date();
+  const nextMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+  document.getElementById('startDate').value = today.toISOString().split('T')[0];
+  document.getElementById('endDate').value = nextMonth.toISOString().split('T')[0];
+
+  loadFromStorage();
+})();
+</script>
+</body>
+</html>
